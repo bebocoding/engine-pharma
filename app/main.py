@@ -1,11 +1,11 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from .database import engine
-
+from .routers import user
 
 app = FastAPI()
 
+app.include_router(user.router)
 
 origins = ["*"]
 app.add_middleware(
@@ -19,4 +19,10 @@ app.add_middleware(
 @app.get("/")
 def root():
     return {"message": "Hello World!"}
+
+
+
+
+
+
 

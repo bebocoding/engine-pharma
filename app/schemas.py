@@ -8,6 +8,7 @@ class UserCreate(BaseModel):
 
 class UserOut(BaseModel):
     id:int
+    phone_number: str
     created_at: datetime
 
 

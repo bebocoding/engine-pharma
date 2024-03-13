@@ -3,7 +3,12 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from .routers.user import user, auth
 
+from . import models
+from .database import engine
+
 app = FastAPI()
+
+models.Base.metadata.create_all(bind=engine)
 
 
 
@@ -20,6 +25,10 @@ app.add_middleware(
 app.include_router(user.router)
 app.include_router(auth.router)
 
+
+@app.get('/')
+def home():
+  return {"message": "Hello World"}
 
 
 

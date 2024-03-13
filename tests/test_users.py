@@ -8,6 +8,6 @@ def test_root(client):
 
 
 def test_create_user(client):
-    res = client.post('/users/', json= {"phone_number": "011", "password": "123"})
+    res = client.post('/users/', json= {"phone_number": "0123", "password": "123"})
     new_user = schemas.UserOut(**res.json())
-    assert new_user.phone_number == "011"
+    assert new_user.phone_number == "0123"
